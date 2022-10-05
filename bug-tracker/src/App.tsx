@@ -2,24 +2,38 @@ import React, { useState } from 'react';
 import './App.css';
 import { Bug, BugPriority } from './Bug';
 import { v4 as uuid } from 'uuid';
+import BugListTable from './BugListTable';
 
 function App() {
     const [newBugDescription, setNewBugDescription] = useState<string>('');
     const [newBugPriority, setNewBugPriority] = useState<string>('Medium');
-    const [newBugList, setNewBugList] = useState<Bug[]>([]);
+    const [bugList, setBugList] = useState<Bug[]>([]);
 
-    const addBug = (event: FormEvent) => {
+    const addBug = (event: any) => {
         event.preventDefault();
-        const newBug: IBug = {
+        const newBug: Bug = {
             id: uuid(),
             description: newBugDescription,
             priority: newBugPriority as BugPriority,
         };
+
+        setBugList([...bugList, newBug]);
+
+        setNewBugDescription('');
+        setNewBugPriority('Medium');
     };
-    const deleteBug = () => {};
+    const deleteBug = (id: string) => {
+        const bugs = bugList.filter((bug) => bug.id !== id);
+
+        setBugList(bugs);
+    };
     return (
         <div className='App'>
             <h1>Bug Tracker</h1>
+            <BugListTable
+                bugs={bugList}
+                onDeleteBug={(id: string) => deleteBug(id)}
+            />
             <form onSubmit={addBug}>
                 <label htmlFor='newBugDescription'>New bug description:</label>
                 <input
@@ -28,7 +42,8 @@ function App() {
                     value={newBugDescription}
                     onChange={(event) =>
                         setNewBugDescription(event.target.value)
-                    }></input>
+                    }
+                />
                 <label htmlFor='newBugPriority'>New bug priority:</label>
                 <select
                     id='newBugPriority'
