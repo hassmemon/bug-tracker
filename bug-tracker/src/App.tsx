@@ -28,13 +28,15 @@ function App() {
         setBugList(bugs);
     };
     return (
-        <div className='App'>
-            <h1>Bug Tracker</h1>
-            <BugListTable
-                bugs={bugList}
-                onDeleteBug={(id: string) => deleteBug(id)}
-            />
-            <form onSubmit={addBug}>
+        <div className='app'>
+            <h1 className='left-margin'>Bug Tracker</h1>
+            <div>
+                <BugListTable
+                    bugs={bugList}
+                    onDeleteBug={(id: string) => deleteBug(id)}
+                />
+            </div>
+            <form className='add-new-bug-form' onSubmit={addBug}>
                 <label htmlFor='newBugDescription'>New bug description:</label>
                 <input
                     type='text'

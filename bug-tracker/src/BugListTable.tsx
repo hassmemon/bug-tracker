@@ -6,15 +6,15 @@ const BugListTable = (props: { bugs: Bug[]; onDeleteBug: Function }) => {
         onDeleteBug(id);
     };
     return (
-        <table>
-            <thead>
+        <table className='self-auto divide-solid border-solid border-2'>
+            <thead className='divide-solid border-solid'>
                 <tr>
                     <th>Description</th>
                     <th>Priority</th>
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className='self-auto divide-solid border-solid border-2'>
                 {bugs.length === 0 && (
                     <tr>
                         <td>No bugs found</td>
