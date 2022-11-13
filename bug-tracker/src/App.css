@@ -15,11 +15,11 @@ table {
 
 table td, table th {
   text-align: left;
-  padding: 10px;
+  padding:10px;
 }
 
 table th {
-  background-color: aqua;
+  background-color: rgb(0, 8, 255);
 }
 
 .add-new-bug-form {
@@ -34,11 +34,11 @@ table th {
 }
 
 .add-new-bug-form * {
-  margin: 5px 0;
+  margin: 2px 0;
 }
 
 .dd-new-bug-form input, .add-new-bug-form select {
-  padding: 10px;
+  padding: 5px;
 }
 
 .add-new-bug-form button {
